@@ -51,7 +51,8 @@ cp -f /usr/share/automake/config.sub .
 %configure \
 	--with-krb5=%{_prefix} \
 	%{?with_parser:--enable-confparser} \
-	--enable-default-ccache-dir=/tmp
+	--enable-default-ccache-dir=/tmp \
+	--with-pamdir=/%{_lib}/security
 
 %{__make}
 
