@@ -1,17 +1,17 @@
-
 %bcond_with	mit	# build with Kerberos V5 from MIT
 %bcond_with	parser	# build with krb5.conf parser
-%define	ver	1.3-rc7
+%define		ver	1.3-rc7
+%define 	modulename pam_krb5
 Summary:	Kerberos V5 Pluggable Authentication Module
 Summary(pl):	Modu³ PAM do uwierzytelniania z u¿yciem Kerberos V5
-Name:		pam-pam_krb5
+Name:		pam-%{modulename}
 Version:	%(echo %{ver} | tr -d - )
 Release:	1
 Epoch:		1
 Vendor:		Balazs Gal <balsa@rit.bme.hu>
 License:	LGPL
 Group:		Base
-Source0:	http://dl.sourceforge.net/pam-krb5/pam_krb5-%{ver}.tar.gz
+Source0:	http://dl.sourceforge.net/pam-krb5/%{modulename}-%{ver}.tar.gz
 # Source0-md5:	2c7c8974604e5c325bb2e62d0066cdce
 Patch0:		%{name}-paths.patch
 %{?with_parser:BuildRequires:	byacc}
@@ -19,6 +19,7 @@ Patch0:		%{name}-paths.patch
 %{?!with_mit:BuildRequires:	heimdal-devel}
 %{?with_mit:BuildRequires:	krb5-devel >= 1.3.1-0.1}
 BuildRequires:	pam-devel
+Obsoletes:	%{modulename}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libdir		/lib
@@ -38,7 +39,7 @@ biletów Kerberos IV, w przypadku gdy Kerberos V5 zosta³ zbudowany
 ze wsparciem dla Kerberos IV.
 
 %prep
-%setup -q -n pam_krb5-%{ver}
+%setup -q -n %{modulename}-%{ver}
 %{?!with_mit:%patch0 -p1}
 
 %build
