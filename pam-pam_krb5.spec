@@ -25,7 +25,7 @@ BuildRequires:	pam-devel
 Obsoletes:	pam_krb5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_libdir		/lib
+%define		_libdir		/%{_lib}
 
 %description
 This is pam_krb5, a pluggable authentication module that can be used
