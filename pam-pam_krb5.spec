@@ -38,7 +38,7 @@ biletów Kerberos IV, w przypadku gdy Kerberos V5 zosta³ zbudowany
 ze wsparciem dla Kerberos IV.
 
 %prep
-%setup -q -n %{name}-%{ver}
+%setup -q -n pam_krb5-%{ver}
 %{?!with_mit:%patch0 -p1}
 
 %build
