@@ -1,5 +1,8 @@
+#
+# Conditional build:
 %bcond_with	mit	# build with Kerberos V5 from MIT
 %bcond_with	parser	# build with krb5.conf parser
+#
 %define		ver	1.3-rc7
 %define 	modulename pam_krb5
 Summary:	Kerberos V5 Pluggable Authentication Module
@@ -16,10 +19,10 @@ Source0:	http://dl.sourceforge.net/pam-krb5/%{modulename}-%{ver}.tar.gz
 Patch0:		%{name}-paths.patch
 %{?with_parser:BuildRequires:	byacc}
 %{?with_parser:BuildRequires:	flex}
-%{?!with_mit:BuildRequires:	heimdal-devel}
+%{!?with_mit:BuildRequires:	heimdal-devel}
 %{?with_mit:BuildRequires:	krb5-devel >= 1.3.1-0.1}
 BuildRequires:	pam-devel
-Obsoletes:	%{modulename}
+Obsoletes:	pam_krb5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libdir		/lib
@@ -40,7 +43,7 @@ ze wsparciem dla Kerberos IV.
 
 %prep
 %setup -q -n %{modulename}-%{ver}
-%{?!with_mit:%patch0 -p1}
+%{!?with_mit:%patch0 -p1}
 
 %build
 %configure \
@@ -52,7 +55,9 @@ ze wsparciem dla Kerberos IV.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 rm -f pam.d/Makefile*
 
