@@ -17,6 +17,7 @@ Group:		Base
 Source0:	http://dl.sourceforge.net/pam-krb5/%{modulename}-%{ver}.tar.gz
 # Source0-md5:	2c7c8974604e5c325bb2e62d0066cdce
 Patch0:		%{name}-paths.patch
+BuildRequires:	automake
 %{?with_parser:BuildRequires:	byacc}
 %{?with_parser:BuildRequires:	flex}
 %{!?with_mit:BuildRequires:	heimdal-devel}
@@ -46,6 +47,7 @@ ze wsparciem dla Kerberos IV.
 %{!?with_mit:%patch0 -p1}
 
 %build
+cp -f /usr/share/automake/config.sub
 %configure \
 	--with-krb5=%{_prefix} \
 	%{?with_parser:--enable-confparser} \
