@@ -47,7 +47,7 @@ ze wsparciem dla Kerberos IV.
 %{!?with_mit:%patch0 -p1}
 
 %build
-cp -f /usr/share/automake/config.sub
+cp -f /usr/share/automake/config.sub .
 %configure \
 	--with-krb5=%{_prefix} \
 	%{?with_parser:--enable-confparser} \
