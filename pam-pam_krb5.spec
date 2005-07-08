@@ -9,7 +9,7 @@ Summary:	Kerberos V5 Pluggable Authentication Module
 Summary(pl):	Modu³ PAM do uwierzytelniania z u¿yciem Kerberos V5
 Name:		pam-%{modulename}
 Version:	%(echo %{ver} | tr -d - )
-Release:	2
+Release:	3
 Epoch:		1
 Vendor:		Balazs Gal <balsa@rit.bme.hu>
 License:	LGPL
@@ -20,7 +20,7 @@ Patch0:		%{name}-paths.patch
 BuildRequires:	automake
 %{?with_parser:BuildRequires:	byacc}
 %{?with_parser:BuildRequires:	flex}
-%{!?with_mit:BuildRequires:	heimdal-devel}
+%{!?with_mit:BuildRequires:	heimdal-devel >= 0.7}
 %{?with_mit:BuildRequires:	krb5-devel >= 1.3.1-0.1}
 BuildRequires:	pam-devel
 Obsoletes:	pam_krb5
