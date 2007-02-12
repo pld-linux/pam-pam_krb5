@@ -6,7 +6,7 @@
 %define		ver	1.3-rc7
 %define 	modulename pam_krb5
 Summary:	Kerberos V5 Pluggable Authentication Module
-Summary(pl):	Modu≥ PAM do uwierzytelniania z uøyciem Kerberos V5
+Summary(pl.UTF-8):   Modu≈Ç PAM do uwierzytelniania z u≈ºyciem Kerberos V5
 Name:		pam-%{modulename}
 Version:	%(echo %{ver} | tr -d - )
 Release:	3
@@ -35,11 +35,11 @@ ticket creation, and optional TGT verification and conversion to
 Kerberos IV tickets if Kerberos V5 was built with support for Kerberos
 IV.
 
-%description -l pl
-To jest pam_krb5, wymienny modu≥ uwierzytelniania, ktÛry moøe byÊ
-uøyty z Linux-PAM i Kerberos V5. Modu≥ ten wspiera zmienianie hase≥,
-tworzenie biletÛw oraz opcjonaln± weryfikacjÍ i konwersjÍ TGT do
-biletÛw Kerberos IV, w przypadku gdy Kerberos V5 zosta≥ zbudowany
+%description -l pl.UTF-8
+To jest pam_krb5, wymienny modu≈Ç uwierzytelniania, kt√≥ry mo≈ºe byƒá
+u≈ºyty z Linux-PAM i Kerberos V5. Modu≈Ç ten wspiera zmienianie hase≈Ç,
+tworzenie bilet√≥w oraz opcjonalnƒÖ weryfikacjƒô i konwersjƒô TGT do
+bilet√≥w Kerberos IV, w przypadku gdy Kerberos V5 zosta≈Ç zbudowany
 ze wsparciem dla Kerberos IV.
 
 %prep
