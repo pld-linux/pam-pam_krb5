@@ -6,7 +6,7 @@
 %define		ver	1.3-rc7
 %define 	modulename pam_krb5
 Summary:	Kerberos V5 Pluggable Authentication Module
-Summary(pl.UTF-8):   Moduł PAM do uwierzytelniania z użyciem Kerberos V5
+Summary(pl.UTF-8):	Moduł PAM do uwierzytelniania z użyciem Kerberos V5
 Name:		pam-%{modulename}
 Version:	%(echo %{ver} | tr -d - )
 Release:	3
