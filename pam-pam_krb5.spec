@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	mit	# build with Kerberos V5 from MIT
+%bcond_with	heimdal	# build with heimdal Kerberos V5
 %bcond_with	parser	# build with krb5.conf parser
 #
 %define		ver	1.3-rc7
@@ -9,7 +9,7 @@ Summary:	Kerberos V5 Pluggable Authentication Module
 Summary(pl.UTF-8):	Moduł PAM do uwierzytelniania z użyciem Kerberos V5
 Name:		pam-%{modulename}
 Version:	%(echo %{ver} | tr -d - )
-Release:	3
+Release:	4
 Epoch:		1
 Vendor:		Balazs Gal <balsa@rit.bme.hu>
 License:	LGPL
@@ -20,8 +20,8 @@ Patch0:		%{name}-paths.patch
 BuildRequires:	automake
 %{?with_parser:BuildRequires:	byacc}
 %{?with_parser:BuildRequires:	flex}
-%{!?with_mit:BuildRequires:	heimdal-devel >= 0.7}
-%{?with_mit:BuildRequires:	krb5-devel >= 1.3.1-0.1}
+%{?with_heimdal:BuildRequires:	heimdal-devel >= 0.7}
+%{!?with_heimdal:BuildRequires:	krb5-devel >= 1.6}
 BuildRequires:	pam-devel
 Obsoletes:	pam_krb5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -44,7 +44,7 @@ ze wsparciem dla Kerberos IV.
 
 %prep
 %setup -q -n %{modulename}-%{ver}
-%{!?with_mit:%patch0 -p1}
+%{?with_heimdal:%patch0 -p1}
 
 %build
 cp -f /usr/share/automake/config.sub .
